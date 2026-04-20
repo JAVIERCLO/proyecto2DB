@@ -1,0 +1,17 @@
+.env
+
+.DS_Store
+Thumbs.db
+
+*.tmp
+*.swp
+
+*.pid
+
+.vscode/
+.idea/
+
+*.sql.bak
+*.dump
+
+db_data/
