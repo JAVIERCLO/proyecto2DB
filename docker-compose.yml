@@ -2,7 +2,6 @@ services:
   db:
     image: postgres:15
     container_name: proyecto_db
-    restart: always
     env_file:
       - .env
     ports:
@@ -11,6 +10,18 @@ services:
       - db_data:/var/lib/postgresql/data
       - ./db/01-DDL.sql:/docker-entrypoint-initdb.d/01-DDL.sql
       - ./db/02-inserts.sql:/docker-entrypoint-initdb.d/02-inserts.sql
+
+  backend:
+    build: ./backend
+    container_name: proyecto_backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
 
 volumes:
   db_data:
