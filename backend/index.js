@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import { pool } from './conexionDB.js';
 import productosRoutes from './api/productos.js';
+import reportesRoutes from './api/reportes.js';
 
 const app = express();
 const port = 3000;
@@ -10,6 +11,7 @@ app.use(express.json());
 
 // rutas
 app.use('/api/productos', productosRoutes);
+app.use('/api/reportes', reportesRoutes);
 
 // endpoint de documentación
 app.get('/', (req, res) => {
