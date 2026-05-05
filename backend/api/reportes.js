@@ -175,5 +175,41 @@ router.get('/inventario', async (req, res) => {
     }
 });
 
+async function cargarPlataformas() {
+    const res = await fetch('/api/reportes/plataformas');
+    const data = await res.json();
+    renderTabla(data.data);
+}
+
+async function topCliente() {
+    const res = await fetch('/api/reportes/top-cliente');
+    const data = await res.json();
+    renderTabla([data.data]);
+}
+
+async function topEmpleado() {
+    const res = await fetch('/api/reportes/top-empleado');
+    const data = await res.json();
+    renderTabla([data.data]);
+}
+
+async function productosVendidos() {
+    const res = await fetch('/api/reportes/productos-mas-vendidos');
+    const data = await res.json();
+    window.dataCSV = data.data;
+    renderTabla(data.data);
+}
+
+async function productosIngresos() {
+    const res = await fetch('/api/reportes/productos-con-mas-ingresos');
+    const data = await res.json();
+    renderTabla(data.data);
+}
+
+async function inventario() {
+    const res = await fetch('/api/reportes/inventario');
+    const data = await res.json();
+    renderTabla(data.data);
+}
 
 export default router;

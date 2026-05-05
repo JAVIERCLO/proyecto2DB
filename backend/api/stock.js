@@ -46,4 +46,15 @@ router.post('/reabastecer', async (req, res) => {
     }
 });
 
+async function reabastecer() {
+    const res = await fetch('/api/stock/reabastecer', {
+        method: 'POST'
+    });
+
+    const data = await res.json();
+
+    document.getElementById('resultadoStock').textContent =
+        JSON.stringify(data, null, 2);
+}
+
 export default router;
