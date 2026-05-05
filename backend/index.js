@@ -4,6 +4,7 @@ import { pool } from './conexionDB.js';
 import productosRoutes from './api/productos.js';
 import reportesRoutes from './api/reportes.js';
 import stockRoutes from './api/stock.js';
+import clientesRoutes from './api/clientes.js';
 
 const app = express();
 const port = 3000;
@@ -14,6 +15,8 @@ app.use(express.json());
 app.use('/api/productos', productosRoutes);
 app.use('/api/reportes', reportesRoutes);
 app.use('/api/stock', stockRoutes);
+app.use('/api/clientes', clientesRoutes);
+
 // endpoint de documentación
 app.get('/', (req, res) => {
     res.send(`
